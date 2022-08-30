@@ -24,7 +24,7 @@
 ## Postman collection
   `NET PRICE CALCULATION.postman_collection.json`
 
-## Supported countries
+## [Supported countries](#supported-countries)
 
 -  ("AU", 0.1)
 -  ("BZ", 0.125)
