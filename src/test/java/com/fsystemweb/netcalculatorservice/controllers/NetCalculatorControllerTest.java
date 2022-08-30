@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 @ExtendWith(MockitoExtension.class)
 public class NetCalculatorControllerTest {
-    @Autowired
+    @InjectMocks
     NetCalculatorController netCalculatorController;
 
     RestTemplate restTemplate;
