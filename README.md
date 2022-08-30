@@ -16,7 +16,7 @@
 
 ## Documentation
 - Check swagger
-  `https://net-calculator-service.herokuapp.com/swagger-ui/index.htmlr`
+  `https://net-calculator-service.herokuapp.com/swagger-ui.html`
 
 ## Heroku API
   `https://net-calculator-service.herokuapp.com`

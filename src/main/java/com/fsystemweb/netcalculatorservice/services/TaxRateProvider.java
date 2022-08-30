@@ -57,7 +57,7 @@ public class TaxRateProvider {
         if(RATE_LIST.containsKey(countryIso)){
             return RATE_LIST.get(countryIso);
         }else {
-            throw new Exception("We not support this country iso: " + countryIso);
+            throw new Exception("We not support this country iso: " + countryIso + " check Support List countries here: https://github.com/fsystemweb/net-calculator-service#supported-countries");
         }
     }
 }
