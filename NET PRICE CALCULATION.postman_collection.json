@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "c96ac14d-3d31-4d25-be00-90547b42d0a7",
+		"name": "NET PRICE CALCULATION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13545093"
+	},
+	"item": [
+		{
+			"name": "CALCULATE NET PRICE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"grossPrice\": 1002.23233,\n  \"countryIso\": \"AR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://net-calculator-service.herokuapp.com/net-price",
+					"protocol": "https",
+					"host": [
+						"net-calculator-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"net-price"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

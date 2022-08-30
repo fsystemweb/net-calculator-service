@@ -19,8 +19,10 @@
   `localhost:8080/swagger`
 
 ## Heroku API
+  `https://net-calculator-service.herokuapp.com`
 
 ## Postman collection
+  `NET PRICE CALCULATION.postman_collection.json`
 
 ## Supported countries
 
