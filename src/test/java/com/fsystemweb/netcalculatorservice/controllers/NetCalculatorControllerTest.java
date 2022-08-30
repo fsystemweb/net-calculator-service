@@ -1,16 +1,14 @@
 package com.fsystemweb.netcalculatorservice.controllers;
 
-import com.fsystemweb.netcalculatorservice.services.CalculeNetPriceService;
-import com.fsystemweb.netcalculatorservice.services.TaxRateProvider;
+
 import com.fsystemweb.netcalculatorservice.web.NetPriceRequest;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -18,17 +16,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 public class NetCalculatorControllerTest {
     @InjectMocks
     NetCalculatorController netCalculatorController;
 
-    RestTemplate restTemplate;
+    @Mock
+    private RestTemplate restTemplate;
 
-    @BeforeEach
-    void setUp(){
-        restTemplate = new RestTemplate();
-    }
 
     final String URL = "http://localhost:8080/net-price";
 
@@ -39,6 +36,9 @@ public class NetCalculatorControllerTest {
         netPriceRequest.setCountryIso("AR");
 
         HttpEntity<NetPriceRequest> request = new HttpEntity<>(netPriceRequest);
+
+        when(restTemplate.exchange(URL, HttpMethod.POST, request, String.class)).thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
+
 
         try {
             ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
@@ -56,6 +56,8 @@ public class NetCalculatorControllerTest {
 
         HttpEntity<NetPriceRequest> request = new HttpEntity<>(netPriceRequest);
 
+        when(restTemplate.exchange(URL, HttpMethod.POST, request, String.class)).thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
+
         try {
             ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
         }catch (HttpClientErrorException e){
@@ -71,6 +73,8 @@ public class NetCalculatorControllerTest {
         netPriceRequest.setCountryIso("AR");
 
         HttpEntity<NetPriceRequest> request = new HttpEntity<>(netPriceRequest);
+
+        when(restTemplate.exchange(URL, HttpMethod.POST, request, String.class)).thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
 
         try {
             ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
@@ -88,6 +92,8 @@ public class NetCalculatorControllerTest {
 
         HttpEntity<NetPriceRequest> request = new HttpEntity<>(netPriceRequest);
 
+        when(restTemplate.exchange(URL, HttpMethod.POST, request, String.class)).thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
+
         try {
             ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
         }catch (HttpClientErrorException e){
@@ -103,6 +109,8 @@ public class NetCalculatorControllerTest {
         netPriceRequest.setCountryIso("ARS");
 
         HttpEntity<NetPriceRequest> request = new HttpEntity<>(netPriceRequest);
+
+        when(restTemplate.exchange(URL, HttpMethod.POST, request, String.class)).thenThrow(new HttpClientErrorException(HttpStatus.BAD_REQUEST));
 
         try {
             ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
@@ -120,6 +128,7 @@ public class NetCalculatorControllerTest {
 
         HttpEntity<NetPriceRequest> request = new HttpEntity<>(netPriceRequest);
 
+        when(restTemplate.exchange(URL, HttpMethod.POST, request, String.class)).thenReturn(ResponseEntity.ok("We not support this country iso: PR"));
 
         ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
 
@@ -136,6 +145,7 @@ public class NetCalculatorControllerTest {
 
         HttpEntity<NetPriceRequest> request = new HttpEntity<>(netPriceRequest);
 
+        when(restTemplate.exchange(URL, HttpMethod.POST, request, String.class)).thenReturn(ResponseEntity.ok("1210.00"));
 
         ResponseEntity<String> result = restTemplate.exchange(URL, HttpMethod.POST, request, String.class);
 
