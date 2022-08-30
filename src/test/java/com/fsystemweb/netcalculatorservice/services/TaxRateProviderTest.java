@@ -20,7 +20,7 @@ public class TaxRateProviderTest {
             taxRateProvider.getTaxRate("AR2");
         }, "Exception was expected");
 
-        Assertions.assertEquals("We not support this country iso: AR2", thrown.getMessage());
+        Assertions.assertEquals("400 We not support this country iso: AR2. Check the list of supported countries here: https://github.com/fsystemweb/net-calculator-service#supported-countries", thrown.getMessage());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class TaxRateProviderTest {
             taxRateProvider.getTaxRate("12");
         }, "Exception was expected");
 
-        Assertions.assertEquals("We not support this country iso: 12", thrown.getMessage());
+        Assertions.assertEquals("400 We not support this country iso: 12. Check the list of supported countries here: https://github.com/fsystemweb/net-calculator-service#supported-countries", thrown.getMessage());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class TaxRateProviderTest {
             taxRateProvider.getTaxRate("");
         }, "Exception was expected");
 
-        Assertions.assertEquals("We not support this country iso: ", thrown.getMessage());
+        Assertions.assertEquals("400 We not support this country iso: . Check the list of supported countries here: https://github.com/fsystemweb/net-calculator-service#supported-countries", thrown.getMessage());
     }
 
     @Test
